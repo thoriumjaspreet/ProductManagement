@@ -123,7 +123,7 @@ const getProduct = async function (req, res) {
       if (size) {
         let sizes = size.split(/[\s,]+/)
         let arr = ["S", "XS", "M", "X", "L", "XXL", "XL"]
-        console.log(sizes)
+       // console.log(sizes)
         for (let i = 0; i < sizes.length; i++) {
             if (arr.indexOf(sizes[i]) == -1)
                 return res.status(400).send({ status: false, message: "availabe sizes must be (S, XS,M,X, L,XXL, XL)" })

@@ -96,7 +96,7 @@ const orderCreate = async function (req, res) {
         let orderDetails = await orderModel.create(order)
 
         let updateCard = {}
-        console.log(totalQuantity)
+      //  console.log(totalQuantity)
 
         if (totalQuantity <= 1) {
             updateCard["items"] = []
@@ -160,7 +160,6 @@ const updateOrder = async function (req, res) {
             return res.status(400).send({ status: false, message: "provide Valid cartId in request body" })
         }
 
-
         let orderPresent = await orderModel.findOne({ _id: orderId, isDeleted: false })
 
         if (!orderPresent) {
@@ -182,7 +181,7 @@ const updateOrder = async function (req, res) {
     
 
         let orderStatus = await orderModel.findOneAndUpdate({ _id: orderId }, { $set: requestBody }, { new: true })
-        let cartUpdate = await cartModel.findOneAndUpdate({ userId: userId }, { $set: { items: [], totalPrice: 0, totalItems: 0 } }, { new: true })
+        //let cartUpdate = await cartModel.findOneAndUpdate({ userId: userId }, { $set: { items: [], totalPrice: 0, totalItems: 0 } }, { new: true })
         res.status(200).send({ status: true, data: orderStatus })
     }
 
